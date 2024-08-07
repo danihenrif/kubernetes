@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: "goserver"
+  labels: #Etiqueta que ajuda a fazer filtros, buscas ou criar algumas regras.
+    app: "goserver"
+spec:   # Especificação de um pod
+  containers: 
+    - name: goserver
+      image: "danielhenrif/hello-go:latest"
+
+# Por via de regra um container roda dentro de um pod, mas pode haver vários containers
+# rodando dentro de um pod.
