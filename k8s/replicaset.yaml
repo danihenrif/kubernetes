@@ -5,6 +5,18 @@ metadata:
   labels: 
     app: goserver
 spec:
-  selector:  #Seletor de labels
+  selector:  
     matchLabels:
       app: goserver
+  replicas: 2 # Até aqui é a configuração do replicaSet
+  template:   # Início da configuração do pod
+      metadata: 
+        labels:
+          app: "goserver"
+      spec:   
+        containers: 
+          - name: goserver
+            image: "danielhenrif/hello-go:latest"
+
+
+#Comando usado para criar as réplicas : kubectl apply -f k8s/replicaset.yaml
