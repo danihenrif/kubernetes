@@ -1,0 +1,23 @@
+# Aula 91
+apiVersion: v1 
+kind: Service
+metadata:
+  name: goserver-service
+spec:
+  selector: #Filtra todos os pods incorporados no serviço
+    app: goserver #Pega todos os pods que dentro do match labels é goserver #veja arquivo deployment
+  type: ClusterIP
+  ports: 
+  - name: goserver-service
+    port: 80
+    protocol: TCP
+
+#Rodar : 
+# kubectl apply -f k8s/service.yaml
+# kubectl get services
+
+# Como acessar ?
+# Redirecionamento de porta : 
+# kubectl port-forward service/goserver-service 8000:80 
+
+
