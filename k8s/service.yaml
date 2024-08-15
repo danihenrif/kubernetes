@@ -10,6 +10,7 @@ spec:
   ports: 
   - name: goserver-service
     port: 80
+    targetPort: 8000 #Porta do container
     protocol: TCP
 
 #Rodar : 
