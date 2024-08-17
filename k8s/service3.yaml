@@ -1,0 +1,28 @@
+# Aula 94
+apiVersion: v1 
+kind: Service
+metadata:
+  name: goserver-service
+spec:
+  selector: #Filtra todos os pods incorporados no serviço
+    app: goserver #Pega todos os pods que dentro do match labels é goserver #veja arquivo deployment
+  type: LoadBalancer
+  ports: 
+  - name: goserver-service
+    port: 80 # Esta é a porta que o serviço expõe dentro do cluster Kubernetes. Qualquer pod que se conectar a este serviço usará a porta 80.
+    targetPort: 8000 #Porta do container
+    protocol: TCP
+
+    #Gera uma porta e libera em todos os nodes do cluster
+
+#Rodar : 
+# kubectl apply -f k8s/service3.yaml
+# kubectl get services
+
+# Como acessar ?
+# Redirecionamento de porta : 
+# kubectl port-forward service/goserver-service 8000:80 
+
+#Gera um ip para acessar a aplicação de fora
+# Muito utilizado quando usa-se um cluster gerenciado ou um cluster kubernets diretamente ligado a um provedor de nuvem
+

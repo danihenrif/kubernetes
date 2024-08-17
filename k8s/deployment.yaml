@@ -16,4 +16,19 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: danielhenrif/hello-go:v3
+          image: danielhenrif/hello-go:v4
+          env:
+          - name: NAME
+            #value: "Daniel"
+            valueFrom: 
+              configMapKeyRef: 
+                name: goserver-env
+                key: NAME  
+          - name: AGE
+            #value: "23"
+            valueFrom: 
+              configMapKeyRef: 
+                name: goserver-env
+                key: AGE
+
+# kubectl apply -f k8s/deployment.yaml
